@@ -33,7 +33,20 @@ class App extends PureComponent {
   //   return state;
   // }
 
+  // componentWillMount() {
+  //   console.log('[App.js] componentWillMount...');
+  // }
+
   UNSAFE_componentDidMount() {
+    console.log('[App.js] UNSAFE_componentDidMount...');
+  }
+
+  shouldComponentUpdate() {
+    console.log('[App.js] shouldComponentUpdate...');
+    return true; // this is required!! As in any other case, there won't be any update
+  }
+
+  componentDidMount() {
     console.log('[App.js] componentDidMount...');
   }
 
