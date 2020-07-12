@@ -8,9 +8,10 @@ class Person extends PureComponent {
   constructor(props) {
     super(props);
     console.log('[Person.js] Inside Person contructor...');
+    this.inputElementRef = React.createRef();
   }
   componentDidMount() {
-    this.inputRef.focus();
+    this.inputElementRef.current.focus();
   }
   render() {
     return (
@@ -22,9 +23,10 @@ class Person extends PureComponent {
         </p>
         <input
           type='text'
-          ref={(inputElemRefWhateverNameCanBeGiven) => {
-            this.inputRef = inputElemRefWhateverNameCanBeGiven;
-          }}
+          // ref={(inputElemRefWhateverNameCanBeGiven) => {
+          //   this.inputRef = inputElemRefWhateverNameCanBeGiven;
+          // }}
+          ref={this.inputElementRef}
           onChange={this.props.changed}
           value={this.props.name}
         />
