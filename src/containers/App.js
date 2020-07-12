@@ -10,23 +10,13 @@ class App extends Component {
     super(props);
     console.log('[App.js] constructor...');
     this.state = {
+      changeCounter: 0,
       persons: [
-        {
-          id: 0,
-          name: 'Kiran C Nayak',
-          age: 21
-        },
-        {
-          id: 1,
-          name: 'Kavya C Nayak',
-          age: 20
-        },
-        {
-          id: 2,
-          name: 'Sadhana D Gaonkar',
-          age: 52
-        }
+        { id: 0, name: 'Kiran C Nayak', age: 21 },
+        { id: 1, name: 'Kavya C Nayak', age: 20 },
+        { id: 2, name: 'Sadhana D Gaonkar', age: 52 }
       ],
+      showPersons: false,
       showCockpit: true
     };
   }
@@ -70,8 +60,9 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({
-      persons
+    this.setState((prevState, props) => {
+      persons: persons,
+      changeCounter: prevState.changeCounter + 1
     });
   };
 
