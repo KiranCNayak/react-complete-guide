@@ -9,6 +9,9 @@ class Person extends PureComponent {
     super(props);
     console.log('[Person.js] Inside Person contructor...');
   }
+  componentDidMount() {
+    this.inputRef.focus();
+  }
   render() {
     return (
       // <div className={classes.Person} onClick={this.props.clicked}>
@@ -19,6 +22,9 @@ class Person extends PureComponent {
         </p>
         <input
           type='text'
+          ref={(inputElemRefWhateverNameCanBeGiven) => {
+            this.inputRef = inputElemRefWhateverNameCanBeGiven;
+          }}
           onChange={this.props.changed}
           value={this.props.name}
         />
