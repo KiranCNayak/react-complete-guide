@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons';
-import styled from 'styled-components';
-
-const StyledButton = styled.button`
-  border: 1px solid blue;
-  padding: 8px;
-  background-color: green;
-  font: inherit;
-  color: white;
-  cursor: pointer;
-
-  &:hover: {
-    background-color: rgb(9, 179, 9);
-    color: white;
-  }
-`;
+import Cockpit from '../components/Cockpit';
 
 class App extends Component {
   state = {
-    buttonText: 'Show Items',
     persons: [
       {
         id: 0,
@@ -40,7 +25,9 @@ class App extends Component {
   };
 
   nameChangedHandler = (event, id) => {
-    const personIndex = this.state.persons.find((person) => person.id === id);
+    const personIndex = this.state.persons.findIndex(
+      (person) => person.id === id
+    );
     const person = {
       ...this.state.persons[personIndex]
     };
@@ -65,28 +52,33 @@ class App extends Component {
   };
   togglePersonsHandler = () => {
     this.setState({
-      showPersons: !this.state.showPersons,
-      buttonText: this.state.showPersons ? 'Show Items' : 'Hide Items'
+      showPersons: !this.state.showPersons
     });
   };
   render() {
-    const assignedClasses = [];
-    if (props.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (props.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
-    }
+    let persons = null;
 
-    return (
-      <div className='App'>
-        <StyledButton onClick={this.togglePersonsHandler}>
-          {this.state.buttonText}
-        </StyledButton>
+    if (this.state.showPersons) {
+      persons = (
         <Persons
           persons={this.state.persons}
           clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
         />
+      );
+    }
+    return (
+      <div className={classes.App}>
+        <Cockpit
+          toggle={this.togglePersonsHandler}
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
+        />
+        {persons}
+        {/* <Persons
+          persons={this.state.persons}
+          click={this.deletePersonHandler}
+        /> */}
       </div>
     );
   }

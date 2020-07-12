@@ -18,9 +18,10 @@
   color: white;
   cursor: pointer;
 }
-.App:hover {
-  background-color: rgb(9, 179, 9);
-  color: black;
+
+.App button:hover {
+  background-color: rgb(63, 171, 9);
+  color: white;
 }
 
 .App button.Red {
@@ -31,4 +32,3 @@
   background-color: rgb(152, 0, 0);
   color: white;
 }
-

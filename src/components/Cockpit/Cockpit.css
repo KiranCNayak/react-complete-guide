@@ -14,10 +14,6 @@
   color: white;
   cursor: pointer;
 }
-.Cockpit:hover {
-  background-color: rgb(9, 179, 9);
-  color: black;
-}
 
 .Cockpit button.Red {
   background-color: red;
@@ -26,16 +22,4 @@
 .Cockpit button.Red:hover {
   background-color: rgb(152, 0, 0);
   color: white;
-}
-
-.personSelected {
-  display: inline-block;
-  margin: 20px;
-  background-color: black;
-  color: white;
-  border: 1px solid #eee;
-  border-radius: 10%;
-  box-shadow: 0 2px 2px #ccc;
-  width: 240px;
-  padding: 20px;
 }
