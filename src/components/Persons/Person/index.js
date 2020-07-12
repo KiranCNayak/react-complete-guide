@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 // import classes from './Person.css';
 import Aux from '../../../hoc/Aux';
+import withClass from '../../../hoc/withClass';
 
 class Person extends PureComponent {
   constructor(props) {
@@ -22,4 +23,4 @@ class Person extends PureComponent {
   }
 }
 
-export default Person;
+export default withClass(Person, classes.Person );
