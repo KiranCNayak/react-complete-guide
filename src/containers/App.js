@@ -50,35 +50,28 @@ class App extends Component {
       persons
     });
   };
+
   togglePersonsHandler = () => {
     this.setState({
       showPersons: !this.state.showPersons
     });
   };
-  render() {
-    let persons = null;
 
-    if (this.state.showPersons) {
-      persons = (
-        <Persons
-          persons={this.state.persons}
-          clicked={this.deletePersonHandler}
-          changed={this.nameChangedHandler}
-        />
-      );
-    }
+  render() {
+
     return (
       <div className={classes.App}>
         <Cockpit
+        title = {this.props.title}
           toggle={this.togglePersonsHandler}
           persons={this.state.persons}
           showPersons={this.state.showPersons}
         />
-        {persons}
-        {/* <Persons
+        {this.state.showPersons ? <Persons
           persons={this.state.persons}
-          click={this.deletePersonHandler}
-        /> */}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        /> : null}
       </div>
     );
   }
