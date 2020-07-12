@@ -16,7 +16,7 @@ class Person extends PureComponent {
         <p>
           I'm {this.props.age} {this.props.age === '1' ? 'year' : 'years'} old
         </p>
-        <input type='text' onChange={this.props.changed} />
+        <input type='text' onChange={this.props.changed} value={this.props.name}/>
       </Aux>
       // </div>
     );
