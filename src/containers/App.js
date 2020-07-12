@@ -61,8 +61,10 @@ class App extends Component {
     persons[personIndex] = person;
 
     this.setState((prevState, props) => {
-      persons: persons,
-      changeCounter: prevState.changeCounter + 1
+      return {
+        persons,
+        changeCounter: prevState.changeCounter + 1
+      };
     });
   };
 
