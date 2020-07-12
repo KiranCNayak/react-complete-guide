@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons';
 import Cockpit from '../components/Cockpit';
 
-class App extends PureComponent {
+class App extends Component {
   constructor(props) {
     super(props);
     console.log('[App.js] constructor...');
@@ -24,7 +24,8 @@ class App extends PureComponent {
           name: 'Sadhana D Gaonkar',
           age: 52
         }
-      ]
+      ],
+      showCockpit: true
     };
   }
 
@@ -91,12 +92,22 @@ class App extends PureComponent {
     console.log('[App.js] render...');
     return (
       <div className={classes.App}>
-        <Cockpit
-          title={this.props.title}
-          toggle={this.togglePersonsHandler}
-          persons={this.state.persons}
-          showPersons={this.state.showPersons}
-        />
+        <button
+          onClick={() => {
+            this.setState({
+              showCockpit: !this.state.showCockpit
+            });
+          }}>
+          Show Hide Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.title}
+            toggle={this.togglePersonsHandler}
+            personsLength={this.state.persons.length}
+            showPersons={this.state.showPersons}
+          />
+        ) : null}
         {this.state.showPersons ? (
           <Persons
             persons={this.state.persons}

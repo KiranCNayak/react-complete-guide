@@ -1,5 +1,6 @@
-import React, { PureComponent } from 'react';
-import classes from './Person.css';
+import React, { Fragment, PureComponent } from 'react';
+// import classes from './Person.css';
+// import Aux from '../../../hoc/Aux'
 
 class Person extends PureComponent {
   constructor(props) {
@@ -8,13 +9,15 @@ class Person extends PureComponent {
   }
   render() {
     return (
-      <div className={classes.Person} onClick={this.props.clicked}>
+      // <div className={classes.Person} onClick={this.props.clicked}>
+      <Fragment>
         <p>Hi! I'm {this.props.name}</p>
         <p>
           I'm {this.props.age} {this.props.age === '1' ? 'year' : 'years'} old
         </p>
         <input type='text' onChange={this.props.changed} />
-      </div>
+      </Fragment>
+      // </div>
     );
   }
 }
