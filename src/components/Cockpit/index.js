@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css';
 
 // const StyledButton = styled.button`
@@ -16,11 +16,14 @@ import classes from './Cockpit.css';
 // `;
 
 const Cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
+
   useEffect(() => {
     console.log('[Cockpit/index.js] useEffect');
-    // setTimeout(() => {
-    //   alert('Saved Data');
-    // }, 1000);
+
+    // If we need to simulate the working of click using code, this is how we do it!!
+    toggleBtnRef.current.click()
+    
     return () => {
       console.log('[Cockpit/index.js] cleanup work in useEffect...');
     };
@@ -50,7 +53,7 @@ const Cockpit = (props) => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working</p>
-      <button className={btnClass} onClick={props.toggle}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.toggle}>
         Toggle
       </button>
     </div>
