@@ -6,6 +6,8 @@ const authContext = React.createContext({
   // like a context variable that holds certain value to be available in various components without the need to pass it
   // down the props tree.
 
+  // Context API is all about managing data across components, without the need to pass data around with props.
+
   authenticated: false,
   login: () => {}
 

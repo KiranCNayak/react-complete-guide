@@ -16,13 +16,14 @@ class Person extends PureComponent {
     this.inputElementRef.current.focus();
   }
 
+  // This is compulsory in class based components, if the context must be used like this --> this.context
+  static contextType = AuthContext;
+
   render() {
     return (
       <Aux>
-        <AuthContext.Consumer>
-          {(context) => context.authenticated ? <p style={{ color: 'green' }}>Authenticated !</p> :
-            <p style={{ color: 'red' }}>Please Login !</p>}
-        </AuthContext.Consumer>
+        {this.context.authenticated ? <p style={{ color: 'green' }}>Authenticated !</p> :
+          <p style={{ color: 'red' }}>Please Login !</p>}
         <p onClick={this.props.clicked}>Hi! I'm {this.props.name}</p>
         <p>
           I'm {this.props.age} {this.props.age === '1' ? 'year' : 'years'} old
