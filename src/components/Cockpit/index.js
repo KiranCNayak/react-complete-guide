@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context'
 
 // const StyledButton = styled.button`
 //   border: 1px solid blue;
@@ -23,7 +24,7 @@ const Cockpit = (props) => {
 
     // If we need to simulate the working of click using code, this is how we do it!!
     toggleBtnRef.current.click()
-    
+
     return () => {
       console.log('[Cockpit/index.js] cleanup work in useEffect...');
     };
@@ -54,8 +55,11 @@ const Cockpit = (props) => {
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working</p>
       <button ref={toggleBtnRef} className={btnClass} onClick={props.toggle}>
-        Toggle
+        Toggle Persons
       </button>
+      <AuthContext.Consumer>
+        {context => <button onClick={context.login}>Log In</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };

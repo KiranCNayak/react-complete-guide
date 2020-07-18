@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person';
 
 class Persons extends PureComponent {
@@ -15,7 +15,7 @@ class Persons extends PureComponent {
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshotBeforeUpdate...');
     return {
-      message: 'Snapshot set!!'
+      message: 'Snapshot set!!',
     };
   }
 
@@ -48,7 +48,7 @@ class Persons extends PureComponent {
           changed={(event) => this.props.changed(event, person.id)}
         />
       );
-    });
+    })
   }
 }
 
